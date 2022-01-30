@@ -1,0 +1,40 @@
+﻿@model IEnumerable<InventoryManagementSystem.Models.PurchaseInvoice>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Suppliers.SupplierName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchaseDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Suppliers.SupplierName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PurchaseDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PurchaseInvoiceId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PurchaseInvoiceId })
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.PurchaseInvoiceId })*@
+        </td>
+    </tr>
+}
+
+</table>

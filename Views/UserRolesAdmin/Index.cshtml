@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+
+@{ 
+    ViewBag.Title = "Index";
+}
+
+<h2>Roles Admin</h2>
+@Html.ActionLink("Create New Role","Create","UserRolesAdmin",new {@class="btn btn-primary"})
+
+<hr />
+
+<table class="table table-striped">
+    <tr>
+        <th>Existing Roles in the system</th>
+    </tr>
+    @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                </tr>
+            }
+</table>
+
+
+<div class="panel panel-info">
+    <div class="panel panel-heading">
+        Search User
+    </div>
+    <div class="panel panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                @using (Html.BeginForm("ManageUserRoles", "UserRolesAdmin"))
+            {
+                <div class="form-group">
+                    @Html.TextBox("UserName")
+
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-default" type="submit" value="Search" />
+                </div>
+            }
+            </div>
+
+            <div class="col-mod-6">
+                @Html.ActionLink("or List all Users", "ListUsers", "UserRolesAdmin", null, new {@class="btn btn-success"})
+            </div>
+        </div>
+    </div>
+</div>

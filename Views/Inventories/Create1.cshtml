@@ -1,0 +1,99 @@
+﻿@using InventoryManagementSystem.Models;
+@model InventoriesViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/FetchData.js"></script>
+<link rel="stylesheet" href="~/Content/Site.css" />
+
+<h2>Purchase Invoice</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.Label("Date")
+    <br />
+    <input type="date" id="datePicker" name="datePicker" />
+    <br />
+
+    @Html.Label("Suppliers")
+    <br />
+    @Html.DropDownList("Supplier", ViewBag.SupplierList as SelectList)
+
+
+    <br />
+
+    <br />
+
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Barcode</th>
+            <th>Expiry</th>
+            <th>No. of Cartons</th>
+            <th>Quantity</th>
+            <th>Cost Price</th>
+        </tr>
+
+        <tr>
+            <td>@Html.Editor("ProductName")</td>
+            <td>@Html.Editor("ProductBarcode")</td>
+            <td><input type="date" id="exdatePicker" name="exdatePicker" /></td>
+            <td>@Html.Editor("Cartons")</td>
+            <td>@Html.Editor("Pieces")</td>
+            <td>@Html.Editor("CostPrice")</td>
+            <td><input type="button" value="ADD" class="click"></td>
+        </tr>
+    </table>
+
+    <table>
+        <thead>
+
+            <tr>
+                <th>PRODUCT</th>
+                <th>BARCODE</th>
+                <th>EXPIRY</th>
+                <th>NUMBER OF CARTONS</th>
+                <th>NUMBER OF ITEMS</th>
+                <th>COST PRICE</th>
+
+            </tr>
+        </thead>
+
+        <tbody class="tbody">
+        </tbody>
+
+
+
+
+        @foreach (var item in Model.InvoiceDetailViewModel)
+        {
+
+        }
+
+
+        @foreach (var item in Model.ProductViewModel)
+        {
+
+        }
+
+
+
+        @foreach (var item in Model.StockViewModel)
+        {
+
+        }
+
+
+
+        @foreach (var item in Model.PurchaseInvoiceViewModel)
+        {
+
+        }
+
+
+    </table>
+
+}

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<InventoryManagementSystem.Models.Stock>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Products.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchaseInvoices.PurchaseInvoiceId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pieces)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cartons)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Products.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PurchaseInvoices.PurchaseInvoiceId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pieces)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cartons)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.StockId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.StockId })
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.StockId })*@
+        </td>
+    </tr>
+}
+
+</table>
